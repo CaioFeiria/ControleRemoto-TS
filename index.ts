@@ -1,7 +1,7 @@
 enum Mode {
   Cool = "COOL",
   Heat = "HEAT",
-  Fan = "FAN"
+  Fan = "FAN",
 }
 
 enum Power {
@@ -63,7 +63,9 @@ class RemoteControl implements Control {
         console.log("O volume já está no máximo!");
       }
     } else {
-      console.log(`A TV ${this.brand} está Desligada! Ligue para conseguir interagir.`);
+      console.log(
+        `A TV ${this.brand} está Desligada! Ligue para conseguir interagir.`
+      );
     }
   }
 
@@ -76,7 +78,9 @@ class RemoteControl implements Control {
         console.log("O volume já está no mínimo!");
       }
     } else {
-      console.log(`A TV ${this.brand} está Desligada! Ligue para conseguir interagir.`);
+      console.log(
+        `A TV ${this.brand} está Desligada! Ligue para conseguir interagir.`
+      );
     }
   }
 
@@ -89,7 +93,9 @@ class RemoteControl implements Control {
         console.log("Número de canal inválido!");
       }
     } else {
-      console.log(`A TV ${this.brand} está Desligada! Ligue para conseguir interagir.`);
+      console.log(
+        `A TV ${this.brand} está Desligada! Ligue para conseguir interagir.`
+      );
     }
   }
 
@@ -144,7 +150,7 @@ class AirConditionerRemoteControl extends RemoteControl {
   private temperature: number = 16;
   private mode: Mode;
 
-   showControlStatus() {
+  showControlStatus() {
     console.log(`
       ╔════════════════════════════════════╗
       ║  STATUS DO CONTROLE DO AR-COND.    ║
@@ -186,4 +192,26 @@ airControl.showControlStatus();
 airControl.changeMode(Mode.Cool);
 airControl.changeTemperature(-5);
 airControl.showControlStatus();
+//#endregion
+
+//#region ListaControles Generics
+class List<T> {
+  private items: T[] = [];
+
+  add(item: T): void {
+    this.items.push(item);
+  }
+
+  getAll(): T[] {
+    return this.items;
+  }
+}
+
+const listOfControls = new List<RemoteControl>();
+console.log("Lista de controles:\n");
+listOfControls.add(remote1);
+listOfControls.add(remote2);
+listOfControls.add(airControl);
+
+console.log(listOfControls.getAll());
 //#endregion

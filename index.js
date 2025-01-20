@@ -176,3 +176,23 @@ airControl.changeMode(Mode.Cool);
 airControl.changeTemperature(-5);
 airControl.showControlStatus();
 //#endregion
+//#region ListaControles Generics
+var List = /** @class */ (function () {
+    function List() {
+        this.items = [];
+    }
+    List.prototype.add = function (item) {
+        this.items.push(item);
+    };
+    List.prototype.getAll = function () {
+        return this.items;
+    };
+    return List;
+}());
+var listOfControls = new List();
+console.log("Lista de controles:\n");
+listOfControls.add(remote1);
+listOfControls.add(remote2);
+listOfControls.add(airControl);
+console.log(listOfControls.getAll());
+//#endregion
